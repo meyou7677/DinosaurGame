@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private bool m_isGrounded;
     private GameObject[] m_raycastpoints;
     public float RaycastDistance;
+    private ParticleSystem m_fire;
 
 
     // Start is called before the first frame update
@@ -18,6 +19,9 @@ public class Player : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody>();
         m_raycastpoints = GameObject.FindGameObjectsWithTag("raycast");
+        m_fire = GetComponentInChildren<ParticleSystem>();
+        var emission = m_fire.emission;
+        emission.enabled = false;
         
     }
 
@@ -26,7 +30,7 @@ public class Player : MonoBehaviour
     {
         float MovementX = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
         m_rb.AddForce(0, 0, MovementX, ForceMode.Acceleration);
-        
+
         m_isGrounded = false;
         for (int i = 0; i < m_raycastpoints.Length; i++)
         {
@@ -53,9 +57,17 @@ public class Player : MonoBehaviour
         {
             transform.Rotate(0, 180, 0);
         }
-
+        if (Input.GetKey(KeyCode.Q))
+        {
+            var emission = m_fire.emission;
+            emission.enabled = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            var emission = m_fire.emission;
+            emission.enabled = false;
+        }
     }
-
     private void FixedUpdate()
     {
         if(m_rb.velocity.magnitude > MaxSpeed)
