@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
     private GameObject[] m_raycastpoints;
     public float RaycastDistance;
     private ParticleSystem m_fire;
+    public KeyCode JumpButton;
+    public KeyCode FlameButton;
+    public KeyCode SpinButton;
+    public static float fire_damage = 1f;
 
 
     // Start is called before the first frame update
@@ -46,23 +50,23 @@ public class Player : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.Space) && m_isGrounded)
+        if (Input.GetKeyDown(JumpButton) && m_isGrounded)
         {
             Vector3 velocity = m_rb.velocity;
             velocity.y = 0;
             m_rb.velocity = velocity;
             m_rb.AddForce(0, JumpForce, 0, ForceMode.Impulse);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(SpinButton))
         {
             transform.Rotate(0, 180, 0);
         }
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(FlameButton))
         {
             var emission = m_fire.emission;
             emission.enabled = true;
         }
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyUp(FlameButton))
         {
             var emission = m_fire.emission;
             emission.enabled = false;
