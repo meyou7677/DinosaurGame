@@ -11,12 +11,13 @@ public class jump_enemy : MonoBehaviour
     public float maxjumptime;
     public Vector3 minjumpforce;
     public Vector3 maxjumpforce;
-    private float enemy_health = 20;
     public GameObject SmokeEffect;
+    private enemy m_enemyscript;
 
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
+        m_enemyscript = GetComponent<enemy>();
 
     }
 
@@ -42,9 +43,8 @@ public class jump_enemy : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        enemy_health -= Player.fire_damage;
-        Debug.Log(enemy_health);
-        if(enemy_health < 1)
+        m_enemyscript.health -= Player.fire_damage;
+        if(m_enemyscript.health < 1)
         {
             GameObject smoke = GameObject.Instantiate(SmokeEffect);
             smoke.transform.position = transform.position;

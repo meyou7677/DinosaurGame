@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public KeyCode FlameButton;
     public KeyCode SpinButton;
     public static float fire_damage = 1f;
+    public float Health;
+    private UImanager m_uimanager;
 
 
     // Start is called before the first frame update
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
         m_fire = GetComponentInChildren<ParticleSystem>();
         var emission = m_fire.emission;
         emission.enabled = false;
+        m_uimanager = GameObject.FindObjectOfType<UImanager>();
         
     }
 
@@ -71,6 +74,7 @@ public class Player : MonoBehaviour
             var emission = m_fire.emission;
             emission.enabled = false;
         }
+        
     }
     private void FixedUpdate()
     {
@@ -78,6 +82,16 @@ public class Player : MonoBehaviour
         {
             Vector3 newvelocity = m_rb.velocity.normalized * MaxSpeed;
             m_rb.velocity = new Vector3 (newvelocity.x,m_rb.velocity.y,newvelocity.z);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "enemy")
+        {
+            var enemyScript = collision.gameObject.GetComponent<enemy>();
+            Health -= enemyScript.damage;
+            m_uimanager.SetPlayerHealth(Health);
         }
     }
 }
