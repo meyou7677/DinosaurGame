@@ -15,9 +15,11 @@ public class Player : MonoBehaviour
     public KeyCode JumpButton;
     public KeyCode FlameButton;
     public KeyCode SpinButton;
+    public KeyCode EnterButton;
     public static float fire_damage = 1f;
     public float Health;
     private UImanager m_uimanager;
+    public bool IsEnter = false;
 
 
     // Start is called before the first frame update
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         float MovementX = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
         m_rb.AddForce(0, 0, MovementX, ForceMode.Acceleration);
 
@@ -74,7 +77,15 @@ public class Player : MonoBehaviour
             var emission = m_fire.emission;
             emission.enabled = false;
         }
-        
+        if (Input.GetKey(EnterButton))
+        {
+            IsEnter = true;
+        }
+        if (Input.GetKeyUp(EnterButton))
+        {
+            IsEnter = false;
+        }
+
     }
     private void FixedUpdate()
     {
@@ -92,6 +103,11 @@ public class Player : MonoBehaviour
             var enemyScript = collision.gameObject.GetComponent<enemy>();
             Health -= enemyScript.damage;
             m_uimanager.SetPlayerHealth(Health);
+        }
+        if(Health <= 0)
+        {
+            m_uimanager.EnableDieMenu();
+            gameObject.SetActive(false);
         }
     }
 }
