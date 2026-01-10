@@ -12,6 +12,7 @@ public class EndOfLevel : MonoBehaviour
         if (other.gameObject.name == "fred")
         {
             SceneManager.LoadScene("WorldMap");
+            
         }
     }
 }
