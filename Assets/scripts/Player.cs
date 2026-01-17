@@ -101,10 +101,15 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "enemy")
         {
             var enemyScript = collision.gameObject.GetComponent<enemy>();
-            Health -= enemyScript.damage;
-            m_uimanager.SetPlayerHealth(Health);
+            ApplyDamage(enemyScript.damage);
+            
         }
-        if(Health <= 0)
+    }
+    public void ApplyDamage(float damage)
+    {
+        Health -= damage;
+        m_uimanager.SetPlayerHealth(Health);
+        if (Health <= 0)
         {
             m_uimanager.EnableDieMenu();
             gameObject.SetActive(false);

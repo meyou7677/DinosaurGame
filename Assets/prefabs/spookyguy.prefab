@@ -1106,7 +1106,6 @@ MonoBehaviour:
   maxjumptime: 5
   minjumpforce: {x: 0, y: 7, z: 1}
   maxjumpforce: {x: 0, y: 10, z: 6}
-  SmokeEffect: {fileID: 8455067177618499444, guid: 12ff09c34e3acf64e92b13fed88e522f, type: 3}
 --- !u!114 &8440538116257575595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,6 +1120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 60
   damage: 10
+  SmokeEffect: {fileID: 8455067177618499444, guid: 12ff09c34e3acf64e92b13fed88e522f, type: 3}
 --- !u!1 &9128430574688450340
 GameObject:
   m_ObjectHideFlags: 0

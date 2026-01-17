@@ -32,6 +32,6 @@ public class UImanager : MonoBehaviour
     public void EnableDieMenu()
     {
         m_dieMenu.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(GameObject.Find("Restart"));
+        //EventSystem.current.SetSelectedGameObject(GameObject.Find("Restart"));
     }
 }

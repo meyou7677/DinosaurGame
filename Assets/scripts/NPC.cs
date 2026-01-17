@@ -7,7 +7,6 @@ public class NPC : MonoBehaviour
 {
     private GameObject m_player;
     private Canvas m_canvas;
-    public float DistanceFromPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +17,10 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Vector3 distanceVector = m_player.transform.position - transform.position;
-        //float distance = distanceVector.magnitude;
-        //if(distance < DistanceFromPlayer)
-        {
+       
+        
             
-        }
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +28,7 @@ public class NPC : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             m_canvas.gameObject.SetActive(true);
+
         }
     }
 

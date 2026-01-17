@@ -17,11 +17,14 @@ public class FlyEnemy : MonoBehaviour
     public float moving_speed;
     public float min_time;
     public float max_time;
+    private enemy m_enemyscript;
+    
     // Start is called before the first frame update
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
         m_position = transform.position;
+        m_enemyscript = GetComponent<enemy>();
     }
 
     // Update is called once per frame
@@ -46,4 +49,6 @@ public class FlyEnemy : MonoBehaviour
         m_rb.MovePosition(new Vector3(transform.position.x , m_position.y + y, transform.position.z + moving_direction * moving_speed * Time.deltaTime));
         
     }
+
+    
 }

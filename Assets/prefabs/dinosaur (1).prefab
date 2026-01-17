@@ -2735,7 +2735,7 @@ GameObject:
   - component: {fileID: 8311923702869072995}
   - component: {fileID: 8311923702869072992}
   - component: {fileID: 8311923702869073023}
-  - component: {fileID: 8311923702869073022}
+  - component: {fileID: -4068915644069139404}
   m_Layer: 0
   m_Name: dinosaur (1)
   m_TagString: Untagged
@@ -2830,7 +2830,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3.6131103
   m_Center: {x: 0, y: 0, z: 3.8397846}
---- !u!114 &8311923702869073022
+--- !u!114 &-4068915644069139404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2842,4 +2842,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6587cd59bda88f46bbfa8596067fceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceFromPlayer: 5
+  DistanceFromPlayer: 0
