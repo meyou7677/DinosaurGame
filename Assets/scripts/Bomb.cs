@@ -34,6 +34,7 @@ public class Bomb : MonoBehaviour
                 }
                 if(obj.tag == "enemy")
                 {
+                    
                     obj.GetComponent<enemy>().ApplyDamage(20);
                 }
                 Vector3 pushDirection = obj.transform.position - transform.position;

@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "enemy")
+        if(collision.gameObject.tag == "enemy" || collision.gameObject.tag == "enemybombresist")
         {
             var enemyScript = collision.gameObject.GetComponent<enemy>();
             ApplyDamage(enemyScript.damage);
